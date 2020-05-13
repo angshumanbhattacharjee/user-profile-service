@@ -43,6 +43,10 @@ public class UserCriteriaModel {
 	
 	@Getter
 	@Setter
+	String userRole;
+	
+	@Getter
+	@Setter
 	HashMap<String, String> userReview;
 	
 	@Getter

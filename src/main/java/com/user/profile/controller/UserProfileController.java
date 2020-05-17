@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.user.profile.model.UserCriteriaModel;
 import com.user.profile.model.UserProfileModel;
 import com.user.profile.service.UserProfileService;
-import com.user.profile.service.impl.UserProfileServiceImpl;
 
 @RestController
 public class UserProfileController {

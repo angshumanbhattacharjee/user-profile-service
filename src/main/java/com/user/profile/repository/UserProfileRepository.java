@@ -1,11 +1,8 @@
 package com.user.profile.repository;
 
-import java.util.List;
-
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import com.user.profile.model.UserCriteriaModel;
 import com.user.profile.model.UserProfileModel;
 
 @Repository

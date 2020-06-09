@@ -3,13 +3,14 @@
  */
 package com.user.profile.service.impl;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.user.profile.constants.IConstants;
 import com.user.profile.model.UserCriteriaModel;
 import com.user.profile.model.UserProfileModel;
 import com.user.profile.repository.UserProfileRepository;
@@ -60,9 +61,45 @@ public class UserProfileServiceImpl implements UserProfileService {
 		}
 		return list;
 	}
+	
+	@Override
+	public String updateUserWashCount(UserProfileModel model) throws Exception {
+		String message = null;
+		Optional<UserProfileModel> model1 = null;
+		try {
+			model1 = repository.findById(model.getUserId());
+			if(model1.isPresent()) {
+				message = updateWashCount(model1.get());
+			}
+			else {
+				message = IConstants.UPDATE_WASH_COUNT_FAILURE;
+			}
+		} catch (Exception e) {
+			throw e;
+			// TODO: handle exception
+		}
+		// TODO Auto-generated method stub
+		return message ;
+	}
 
 	
 	
+	private String updateWashCount(UserProfileModel userProfileModel) {
+		String message = null;
+		try {
+			userProfileModel.setWashCount(userProfileModel.getWashCount() + 1);
+			userProfileModel.setUserUpdatedDate(CommonUtility.getCurrentDateInString());
+			repository.save(userProfileModel);
+			message = IConstants.UPDATE_WASH_COUNT_SUCCESS + userProfileModel.getUserName();
+		} catch (Exception e) {
+			throw e;
+			// TODO: handle exception
+		}
+		// TODO Auto-generated method stub
+		return message;
+	}
+
+
 	/**
 	 	Method used to prepare the incoming user model based on register or update
 	 	
@@ -76,11 +113,10 @@ public class UserProfileServiceImpl implements UserProfileService {
 		}
 		else {
 			model.setUserCreatedDate(CommonUtility.getCurrentDateInString());
-			model.setUserUpdatedDate(CommonUtility.getCurrentDateInString());
-			model.setUserStatus(2);
 			model.setWashCount(0);
-			model.setUserReview(new HashMap<String, String>());
+			model.setUserStatus(2);
 		}
 		return model;
 	}
+
 }

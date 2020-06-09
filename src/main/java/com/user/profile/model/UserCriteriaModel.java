@@ -3,6 +3,7 @@
  */
 package com.user.profile.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -23,8 +24,13 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class UserCriteriaModel {
+public class UserCriteriaModel implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Getter
 	String userId;

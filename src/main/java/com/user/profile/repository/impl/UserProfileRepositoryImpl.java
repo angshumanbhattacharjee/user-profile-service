@@ -10,7 +10,6 @@ import org.springframework.util.StringUtils;
 
 import com.user.profile.model.UserCriteriaModel;
 import com.user.profile.model.UserProfileModel;
-import com.user.profile.repository.UserProfileRepository;
 import com.user.profile.repository.UserProfileRepositoryCriteria;
 
 public class UserProfileRepositoryImpl implements UserProfileRepositoryCriteria{
@@ -24,7 +23,9 @@ public class UserProfileRepositoryImpl implements UserProfileRepositoryCriteria{
 		try {
 			list = repository.find(getWhereClause(criteria), UserProfileModel.class);
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("Error Message: " + e.getMessage());
+			System.out.println("StackTrace: " + e.getStackTrace());
+			throw e;
 		}
 		// TODO Auto-generated method stub
 		return list ;
@@ -34,12 +35,29 @@ public class UserProfileRepositoryImpl implements UserProfileRepositoryCriteria{
 		Query whereClause = new Query();
 		
 		//getCustomerByStatus  //getWasherByStatus
-		if(!(StringUtils.isEmpty(criteria.getUserStatus())) && !(StringUtils.isEmpty(criteria.getUserRole()))) {
-			whereClause.addCriteria(Criteria.where("userStatus").is(criteria.getUserStatus()).and("userRole").is(criteria.getUserRole()));
+		if(!StringUtils.isEmpty(criteria.getUserStatus())) {
+			whereClause.addCriteria(Criteria.where("userStatus").is(criteria.getUserStatus()));
 		}
-		//getAllCustomers //getAllWashers
 		if(!StringUtils.isEmpty(criteria.getUserRole())) {
 			whereClause.addCriteria(Criteria.where("userRole").is(criteria.getUserRole()));
+		}
+		if(!StringUtils.isEmpty(criteria.getUserName())) {
+			whereClause.addCriteria(Criteria.where("userName").is(criteria.getUserName()));
+		}
+		if(!StringUtils.isEmpty(criteria.getUserReview())) {
+			whereClause.addCriteria(Criteria.where("userReview").is(criteria.getUserReview()));
+		}
+		if(!StringUtils.isEmpty(criteria.getUserCreatedDate())) {
+			whereClause.addCriteria(Criteria.where("userCreatedDate").is(criteria.getUserCreatedDate()));
+		}
+		if(!StringUtils.isEmpty(criteria.getAverageRating())) {
+			whereClause.addCriteria(Criteria.where("averageRating").is(criteria.getAverageRating()));
+		}
+		if(!StringUtils.isEmpty(criteria.getWashCount())) {
+			whereClause.addCriteria(Criteria.where("washCount").is(criteria.getWashCount()));
+		}
+		if(!StringUtils.isEmpty(criteria.getUserId())) {
+			whereClause.addCriteria(Criteria.where("userId").is(criteria.getUserId()));
 		}
 		return whereClause ;
 	}

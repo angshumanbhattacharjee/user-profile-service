@@ -2,6 +2,9 @@ spring:
   profiles: default
   application:
     name: user-profile-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
   data:
     mongodb:
       host: localhost
@@ -12,3 +15,6 @@ logging:
     root: INFO
 server:
   port: 9090
+
+  
+data.transform.queue: user.review.queue

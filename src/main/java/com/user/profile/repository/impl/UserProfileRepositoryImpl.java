@@ -34,7 +34,6 @@ public class UserProfileRepositoryImpl implements UserProfileRepositoryCriteria{
 	private Query getWhereClause(UserCriteriaModel criteria) {
 		Query whereClause = new Query();
 		
-		//getCustomerByStatus  //getWasherByStatus
 		if(!StringUtils.isEmpty(criteria.getUserStatus())) {
 			whereClause.addCriteria(Criteria.where("userStatus").is(criteria.getUserStatus()));
 		}

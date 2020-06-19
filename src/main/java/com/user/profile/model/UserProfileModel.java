@@ -6,8 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include; 
 
 import java.io.Serializable;
-import java.util.HashMap;
-
+import java.util.ArrayList;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
@@ -79,7 +78,7 @@ public class UserProfileModel implements Serializable {
 	
 	@Getter
 	@Setter
-	HashMap<String, String> userReview;
+	ArrayList<String> userReview;
 	
 	@Getter
 	@Setter

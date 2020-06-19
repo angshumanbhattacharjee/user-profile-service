@@ -108,15 +108,18 @@ public class UserProfileServiceImpl implements UserProfileService {
 	 	userStatus of value 0 means user is deleted
 	*/
 	private UserProfileModel prepareObject(UserProfileModel model) {
-		if(!StringUtils.isEmpty(model.getUserId())) {
-			model.setUserUpdatedDate(CommonUtility.getCurrentDateInString());
+		Optional<UserProfileModel> model1 = repository.findById(model.getUserId());
+		if(!StringUtils.isEmpty(model.getUserId()) || model1.get() != null) {
+			model1.get().setUserUpdatedDate(CommonUtility.getCurrentDateInString());
+			return model1.get();
 		}
 		else {
 			model.setUserCreatedDate(CommonUtility.getCurrentDateInString());
 			model.setWashCount(0);
 			model.setUserStatus(2);
+			model.setAverageRating(0.0);
+			return model;
 		}
-		return model;
 	}
 
 }

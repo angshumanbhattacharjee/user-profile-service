@@ -19,6 +19,6 @@ public interface UserProfileService {
 
 	public List<UserProfileModel> getUsersByCriteria(UserCriteriaModel criteria) throws Exception;
 
-	public String updateUserWashCount(UserProfileModel model) throws Exception;
+	public String updateUserWashCount(String userWashCountMessage) throws Exception;
 
 }

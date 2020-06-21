@@ -2,7 +2,6 @@ package com.user.profile.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,6 +52,7 @@ public class UserProfileController {
 		return response;
 	}
 	
+	/**
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@PostMapping(value = "/user-profile-service/updateUserWashCount", produces = MediaType.TEXT_PLAIN_VALUE)
 	public ResponseEntity updateUserWashCount(@RequestBody(required = true) UserProfileModel model) throws Exception {
@@ -67,4 +67,5 @@ public class UserProfileController {
 		return response ;
 		
 	}
+	**/
 }

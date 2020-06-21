@@ -18,3 +18,4 @@ server:
 
   
 data.transform.queue: user.review.queue
+user.profile.update.queue: user.wash.count.update.queue

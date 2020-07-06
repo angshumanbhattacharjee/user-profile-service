@@ -41,6 +41,14 @@ public class UserCriteriaModel implements Serializable {
 	
 	@Getter
 	@Setter
+	String userPassword;
+	
+	@Getter
+	@Setter
+	String userEmailId;
+	
+	@Getter
+	@Setter
 	Integer userStatus;
 	
 	@Getter

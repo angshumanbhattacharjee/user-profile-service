@@ -37,6 +37,12 @@ public class UserProfileRepositoryImpl implements UserProfileRepositoryCriteria{
 		if(!StringUtils.isEmpty(criteria.getUserStatus())) {
 			whereClause.addCriteria(Criteria.where("userStatus").is(criteria.getUserStatus()));
 		}
+		if(!StringUtils.isEmpty(criteria.getUserPassword())) {
+			whereClause.addCriteria(Criteria.where("userPassword").is(criteria.getUserPassword()));
+		}
+		if(!StringUtils.isEmpty(criteria.getUserEmailId())) {
+			whereClause.addCriteria(Criteria.where("userEmailId").is(criteria.getUserEmailId()));
+		}
 		if(!StringUtils.isEmpty(criteria.getUserRole())) {
 			whereClause.addCriteria(Criteria.where("userRole").is(criteria.getUserRole()));
 		}

@@ -3,6 +3,7 @@ package com.user.profile.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,7 @@ import com.user.profile.model.UserProfileModel;
 import com.user.profile.service.UserProfileService;
 
 @RestController
+@CrossOrigin(origins="http://localhost:3000")
 public class UserProfileController {
 	
 	@Autowired
@@ -52,20 +54,4 @@ public class UserProfileController {
 		return response;
 	}
 	
-	/**
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@PostMapping(value = "/user-profile-service/updateUserWashCount", produces = MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity updateUserWashCount(@RequestBody(required = true) UserProfileModel model) throws Exception {
-		ResponseEntity response = null;
-		try {
-			response = new ResponseEntity(service.updateUserWashCount(model), HttpStatus.OK);
-		} catch (Exception e) {
-			response = new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
-			throw e;
-			// TODO: handle exception
-		}
-		return response ;
-		
-	}
-	**/
 }
